@@ -1,0 +1,45 @@
+{
+	"PROJECT": {
+		"NAME": "Face Attribute",
+		"FEAT": "AGE",
+		"VERSION": "013"
+	},
+	"CONTENT": {
+		"MODEL": {
+			"BACKBONE": "vgg16",
+			"PRETRAIN": true,
+			"CLASSIFIER": {
+				"HIDDEN": "4048",
+				"NUM_CLASS": "5"
+			}
+		},
+		"DATA": {
+			"NAME": "013_balanced",
+			"NUM_WORKERS": 0
+		},
+		"TRAIN": {
+			"RETRAIN": {
+				"IS_RETRAIN": false,
+				"NAME_RETRAIN": ""
+			},
+			"VALIDATION": {
+				"IS_VALIDATION": true,
+				"TRAIN_SIZE": 0.85
+			},
+			"OPTIM": {
+				"NAME": "Adam",
+				"LR": 0.05
+			},
+			"ES": {
+				"PATIENCE": 5,
+				"MODE": "val_loss"
+			},
+			"LR_SCHEDULER": {
+				"PATIENCE": 3,
+				"FACTOR": 0.1
+			},
+			"BATCH_SIZE": 32,
+			"EPOCHS": 10
+		}
+	}
+}
